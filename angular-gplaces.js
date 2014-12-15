@@ -40,6 +40,9 @@ angular.module( 'ngGplaces', []).directive('input', function() {
 
     element.on("$destroy", function() {
       var obj = scope.gPlace.gm_accessors_.place;
+      
+      if (!_.isObject(obj))
+        return;
 
       $.each(Object.keys(obj), function(i, key) {
         if(typeof(obj[key]) === "object" && obj[key].hasOwnProperty("gm_accessors_")) {
